@@ -1,0 +1,15 @@
+<form action="">
+<div class="row aling-items-center">
+    <div class="col-auto">
+        <label form="newItem" class="col-form-label">New {{label}}</label>
+    </div>
+    <div class="col-auto">
+        <input type="text" id="newItem" class="form-control" #newItem>
+    </div>
+    <div class="col-auto">
+        <button (click)="onAddItem(newItem.value)" type="button" class="btn" [ngClass]="[className]">
+            {{label}} Add
+        </button>
+    </div>
+</div>
+</form>
