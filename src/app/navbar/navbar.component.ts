@@ -8,14 +8,16 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private readonly router:  Router) { }
+  constructor(private readonly router: Router) { }
 
   ngOnInit(): void {
-   }
-
-  goToReactive():void{
-    this.router.navigate(['contac-reactive'], {queryParams:{name: 'lixbeth'}});
-    this.router.navigate(['contac-template', '580']) 
   }
 
+  goToReactive(): void {
+    this.router.navigate(['contac-reactive'], {queryParams:{name: 'lixbeth'}});
+  }
+
+  goToTemplate(): void {
+    this.router.navigate(['contac-template', '580']);
+  }
 }

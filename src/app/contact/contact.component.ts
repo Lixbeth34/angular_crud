@@ -26,7 +26,7 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
-    })
+    }) 
   }
   onSubmit(form: NgForm): void {
 

@@ -31,7 +31,7 @@ export class ContactReactiveComponent implements OnInit {
   }
 
   onSetValue(): void {
-    // this.contactForm.setValue({ comment: 'Hola mundo' });
+
   }
 
   onSubmit(): void {
