@@ -9,12 +9,19 @@ import { ListComponent } from "./users/list/list.component";
 import { DetailsComponent } from "./users/details/details.component";
 import { PermissionsGuard } from "./guards/permissions.guard";
 import { WithoutSaveGuard } from "./guards/without-save.guard";
+import { DataResolverService } from "./resolver/data.resolver.service";
 
 
 const routes: Routes = [
     {path: '', redirectTo:'/home', pathMatch: 'full'},
-    {path: 'contac-reactive', component: ContactReactiveComponent},
-    {path: 'contac-template/:id', component: ContactComponent},
+    {path: 'contac-reactive',
+    component: ContactReactiveComponent,
+    canDeactivate: [WithoutSaveGuard],
+    resolve: { departments: DataResolverService }
+    },
+    {path: 'contac-template/:id', component: ContactComponent, 
+     resolve: { departments: DataResolverService }
+    },
     {path: 'home', component: HomeComponent},
     {path: 'users', 
     component: UserComponent, 
