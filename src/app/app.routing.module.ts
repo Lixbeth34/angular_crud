@@ -14,10 +14,8 @@ import { DataResolverService } from "./resolver/data.resolver.service";
 
 const routes: Routes = [
     {path: '', redirectTo:'/home', pathMatch: 'full'},
-    {path: 'contac-reactive',
-    component: ContactReactiveComponent,
-    canDeactivate: [WithoutSaveGuard],
-    resolve: { departments: DataResolverService }
+    {path: 'contac-reactive', loadChildren: ()=> 
+    import('./contact-reactive/contact-reactive.module').then(m => m.ContactReactiveModule)
     },
     {path: 'contac-template/:id', component: ContactComponent, 
      resolve: { departments: DataResolverService }
