@@ -15,7 +15,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { UserComponent } from './users/user/user.component';
 import { DetailsComponent } from './users/details/details.component';
 import { ListComponent } from './users/list/list.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { SprinnerComponent } from './shared/sprinner/sprinner.component';
+import { SpinnerInterceptor } from './shared/sprinner/spinner.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import {HttpClientModule} from '@angular/common/http';
     UserComponent,
     DetailsComponent,
     ListComponent,
+    SprinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,9 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:SpinnerInterceptor, multi:true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
