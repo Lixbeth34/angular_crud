@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
       <div class="col-md-6 my-3">
-        <app-form-new-item (newItemEvent)="addNewCity($event)" [label]="'city'" [className]="'btn-info'">
+        <app-form-new-item [selection]="selection" 
+        (updateItemEvent)="updateCity($event)"
+        (newItemEvent)="addNewCity($event)" [label]="'city'" [className]="'btn-info'">
         </app-form-new-item>
       </div>
       <div class="col-md-6 my-3">
@@ -9,15 +11,15 @@
       </div>
       <hr>
       <div class="col-md-8"> 
-        <ul>
-          <app-cities *ngFor="let city of (cities | filter:criteria) " (cityClickedEvent)="onCityClicked($event)"
-            [city]="city" [selection]="selection">
+          <app-cities *ngFor="let city of (cities | filter:criteria) " 
+          (cityDeleteEvent)="onCityDelete($event)"
+          (citySelectedEvent)="onCitySelected($event)"
+          [city]="city" [selection]="selection">
           </app-cities>
-        </ul> 
       </div>
       <div class="col-md-4">
-        <div *ngIf="selection">
-          <p>Your city is: {{selection}}</p>
+        <div *ngIf="selection?.name">
+          <p>Your city is: {{selection?.name}}</p>
           <app-button (click)="onClear()" [color]="'blue'" [label]="'Clear you selection'" >
           </app-button>
         </div>
